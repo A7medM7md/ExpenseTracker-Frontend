@@ -18,7 +18,7 @@ function showPage(page) {
 }
 
 showRegister.addEventListener('click', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent Refresh
     showPage(registerPage);
 });
 
@@ -71,6 +71,7 @@ logoutBtn.addEventListener('click', function() {
     updateTable();
 });
 
+// Expenses
 
 let expenses = [];
 let totalAmount = 0;
