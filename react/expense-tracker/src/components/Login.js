@@ -1,23 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../style.css";
 
 const Login = ({ setIsAuthenticated }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const user = users.find(
-            (u) => u.email === email && u.password === password
-        );
-        if (user) {
-            setIsAuthenticated(true);
-            navigate("/tracker");
-        } else {
-            alert("Invalid email or password");
+        setIsLoading(true);
+        try {
+            const response = await axios.post("https://localhost:7037/api/auth/login", {
+                email,
+                password,
+            });
+            console.log("Login response:", response.data);
+            if (response.status === 200) {
+                const { token, refreshToken, userId } = response.data;
+                if (!token || !refreshToken || !userId) {
+                    throw new Error("Invalid response from server");
+                }
+                setIsAuthenticated(true);
+                localStorage.setItem("accessToken", token); // Access Token
+                localStorage.setItem("refreshToken", refreshToken); // Refresh Token
+                localStorage.setItem("userId", userId);
+                navigate("/tracker");
+            }
+        } catch (error) {
+            const errorMessage = error.response?.data?.message ||
+                error.response?.data?.errors?.flat().join("\n") ||
+                "Invalid email or password";
+            console.error("Login error:", error.response);
+            alert(errorMessage);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -34,6 +53,7 @@ const Login = ({ setIsAuthenticated }) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                     <label htmlFor="login-password">Password</label>
                     <input
@@ -43,14 +63,17 @@ const Login = ({ setIsAuthenticated }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
-                    <button type="submit">Login</button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? "Logging in..." : "Login"}
+                    </button>
                 </form>
                 <p>
-                    Don't have an account?{" "}
-                    <a href="#" onClick={() => navigate("/register")}>
+                    Don't have an account?<br/><br/>{" "}
+                    <button onClick={() => navigate("/register")} className="link-button" disabled={isLoading}>
                         Register here
-                    </a>
+                    </button>
                 </p>
             </div>
         </div>
