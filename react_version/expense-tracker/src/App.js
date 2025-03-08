@@ -9,7 +9,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
 
   useEffect(() => {
-    // تحقق من حالة الـ Authentication عند تحميل الـ App
     const token = localStorage.getItem("accessToken");
     setIsAuthenticated(!!token);
   }, []);

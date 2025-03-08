@@ -7,14 +7,13 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false); // حالة الـ Loading
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            // التسجيل
             const registerResponse = await axios.post("https://localhost:7037/api/auth/register", {
                 name: username,
                 email,
@@ -22,7 +21,6 @@ const Register = () => {
             });
             alert(registerResponse.data.message);
 
-            // تسجيل الدخول تلقائيًا بعد التسجيل
             const loginResponse = await axios.post("https://localhost:7037/api/auth/login", {
                 email,
                 password,
@@ -33,12 +31,10 @@ const Register = () => {
                 throw new Error("Invalid login response from server");
             }
 
-            // تخزين الـ Tokens في localStorage
             localStorage.setItem("accessToken", token);
             localStorage.setItem("refreshToken", refreshToken);
             localStorage.setItem("userId", userId);
 
-            // الانتقال لصفحة Tracker
             navigate("/tracker");
         } catch (error) {
             const errorMessage = error.response?.data?.message || 

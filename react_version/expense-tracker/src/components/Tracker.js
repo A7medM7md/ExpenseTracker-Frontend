@@ -22,7 +22,6 @@ const Tracker = ({ setIsAuthenticated }) => {
     const categories = ["Food & Beverage", "Rent", "Transport", "Relaxing", "Other"];
     const currencies = ["USD", "EGP", "EUR", "SAR"];
 
-    // تعريف handleLogout باستخدام useCallback
     const handleLogout = useCallback(() => {
         setIsAuthenticated(false);
         localStorage.removeItem("accessToken");
@@ -31,7 +30,6 @@ const Tracker = ({ setIsAuthenticated }) => {
         navigate("/login");
     }, [setIsAuthenticated, navigate]);
 
-    // إعداد Axios Interceptor للتعامل مع 401 وتجديد الـ Token
     useEffect(() => {
         const axiosInterceptor = axios.interceptors.response.use(
             response => response,
@@ -65,7 +63,6 @@ const Tracker = ({ setIsAuthenticated }) => {
         };
     }, [setIsAuthenticated, handleLogout]);
 
-    // جلب البيانات عند التحميل
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("userId");
@@ -107,9 +104,8 @@ const Tracker = ({ setIsAuthenticated }) => {
         } else {
             handleLogout();
         }
-    }, [handleLogout]); // إضافة handleLogout كـ Dependency
+    }, [handleLogout]);
 
-    // تحديث المبلغ المحول
     useEffect(() => {
         if (!exchangeRates || !amount || !currency || !convertToCurrency) {
             setConvertedAmount("");
@@ -144,7 +140,6 @@ const Tracker = ({ setIsAuthenticated }) => {
         const token = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("userId");
 
-        // تحويل المبلغ للعملة المختارة في "Your Currency"
         let finalAmount = amountNum;
         if (currency !== convertToCurrency && exchangeRates) {
             const rateToEGP = exchangeRates[currency] || 1;
@@ -230,7 +225,6 @@ const Tracker = ({ setIsAuthenticated }) => {
         const token = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("userId");
 
-        // تحويل المبلغ للعملة المختارة في "Your Currency"
         let finalAmount = amountNum;
         if (currency !== convertToCurrency && exchangeRates) {
             const rateToEGP = exchangeRates[currency] || 1;
