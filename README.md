@@ -1,17 +1,47 @@
-Expense Tracker - Front-End (React & Vanilla JS)
-A versatile expense tracking web application featuring two front-end implementations: one built with React and another with Vanilla JavaScript. The React version offers a dynamic and responsive interface for managing expenses, fully integrated with a .NET back-end API for data persistence. The Vanilla JS version is a lightweight MVP (Minimum Viable Product) that stores data in local storage, designed as a standalone prototype without back-end integration.
+Expense Tracker 💰
+A versatile expense tracking web application featuring two front-end implementations: a modern React version with .NET back-end integration and a lightweight Vanilla JS version using local storage for quick prototyping.
+🔑 Key Features
 
-Key Features:
-- Add, Edit, and delete expense entries
-- Responsive design optimized for all devices
-- React Version: Component-based UI with full .NET back-end integration
-- Vanilla JS Version: Lightweight MVP using local storage for data persistence (no back-end integration)
+➕ Add, ✏️ Edit, and 🗑️ Delete expense entries
+📱 Responsive design optimized for all devices
+⚛️ React Version: Component-based UI with full integration to a .NET back-end API
+⚡ Vanilla JS Version: Lightweight MVP using local storage (no back-end)
 
-Tech Stack:
-- React Version: React, JavaScript, CSS, Axios
-- Vanilla JS Version: Pure JavaScript, CSS, Local Storage
-- Backend : .NET, Entity Framework with SQL Server, RESTful APIs
+🛠️ Tech Stack
+React Version
 
-Versions:
-- `react_version/expense-tracker`: React-based implementation with back-end integration
-- `vanillajs_version`: Vanilla JavaScript MVP with local storage
+React
+JavaScript
+CSS
+Axios (for API requests)
+
+Vanilla JS Version
+
+Pure JavaScript
+CSS
+Local Storage (for data persistence)
+
+Back-End
+
+.NET (C#)
+Entity Framework Core
+SQL Server
+RESTful APIs
+
+📁 Project Structure
+/
+├── react_version/expense-tracker     # Full React implementation with back-end integration
+└── vanillajs_version                 # MVP built with Vanilla JS & local storage
+
+🚀 Getting Started
+React Version
+
+Navigate to react_version/expense-tracker
+Run npm install
+Configure .env to point to the .NET API
+Run the app using npm start
+
+Vanilla JS Version
+
+Navigate to vanillajs_version
+Open index.html directly in the browser (no setup needed)
