@@ -1,47 +1,43 @@
-Expense Tracker 💰
-A versatile expense tracking web application featuring two front-end implementations: a modern React version with .NET back-end integration and a lightweight Vanilla JS version using local storage for quick prototyping.
-🔑 Key Features
+# 💰 Expense Tracker - Front-End (React & Vanilla JS)
 
-➕ Add, ✏️ Edit, and 🗑️ Delete expense entries
-📱 Responsive design optimized for all devices
-⚛️ React Version: Component-based UI with full integration to a .NET back-end API
-⚡ Vanilla JS Version: Lightweight MVP using local storage (no back-end)
+A versatile expense tracking web application featuring two front-end implementations:
 
-🛠️ Tech Stack
-React Version
+- **React Version**: A modern, fully integrated client with .NET back-end.
+- **Vanilla JS Version**: A lightweight MVP using local storage, ideal for quick prototyping.
 
-React
-JavaScript
-CSS
-Axios (for API requests)
+# 🔑 Key Features
+- ➕ Add, ✏️ Edit, and 🗑️ Delete expense entries
+- 📱 Responsive design optimized for all devices
+- ⚛️ **React Version**: Component-based UI with full integration to a .NET back-end API
+- ⚡ **Vanilla JS Version**: Lightweight MVP using local storage (no back-end)
 
-Vanilla JS Version
+# 🛠️ Tech Stack
 
-Pure JavaScript
-CSS
-Local Storage (for data persistence)
+## React Version
+- React
+- JavaScript
+- CSS
+- Axios (for API requests)
 
-Back-End
+## Vanilla JS Version
+- Pure JavaScript
+- CSS
+- Local Storage (for data persistence)
 
-.NET (C#)
-Entity Framework Core
-SQL Server
-RESTful APIs
+## Back-End
+- .NET (C#)
+- Entity Framework Core
+- SQL Server
+- RESTful APIs
 
-📁 Project Structure
-/
-├── react_version/expense-tracker     # Full React implementation with back-end integration
-└── vanillajs_version                 # MVP built with Vanilla JS & local storage
+# 🚀 Getting Started
 
-🚀 Getting Started
-React Version
+## React Version
+- Navigate to `react_version/expense-tracker`
+- Run `npm install`
+- Configure `.env` to point to the .NET API
+- Run the app using `npm start`
 
-Navigate to react_version/expense-tracker
-Run npm install
-Configure .env to point to the .NET API
-Run the app using npm start
-
-Vanilla JS Version
-
-Navigate to vanillajs_version
-Open index.html directly in the browser (no setup needed)
+## Vanilla JS Version
+- Navigate to `vanillajs_version`
+- Open `index.html` directly in the browser (no setup needed)
